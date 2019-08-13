@@ -43,4 +43,17 @@ router.get('/sports', (req, res, next) => {
   });
 });
 
+router.get('/testpython', (req, res, next) => {
+  console.log('getting data');
+  axios
+    .post('http://127.0.0.1:5000/test', {
+      url:
+        'https://www.theguardian.com/us-news/2019/aug/12/raining-plastic-colorado-usgs-microplastics',
+    })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(e => console.error(e));
+});
+
 module.exports = router;
