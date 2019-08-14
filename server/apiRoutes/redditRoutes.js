@@ -22,38 +22,43 @@ const filterJsonFromReddit = axiosData => {
 };
 
 // get to /api/reddit/news
+router.get('/:subreddit', (req, res, next) => {
+  axios
+    .get(`https://www.reddit.com/r/${subreddit}.json`)
+    .then(response => {
+      const filteredPosts = filterJsonFromReddit(response.data);
+      resizeTo.status(200).send(filteredPosts);
+    })
+    .catch(next);
+});
 router.get('/news', (req, res, next) => {
-  axios.get('https://www.reddit.com/r/news.json').then(response => {
-    const filteredPosts = filterJsonFromReddit(response.data);
-    res.status(200).send(filteredPosts);
-  });
+  axios
+    .get('https://www.reddit.com/r/news.json')
+    .then(response => {
+      const filteredPosts = filterJsonFromReddit(response.data);
+      res.status(200).send(filteredPosts);
+    })
+    .catch(next);
 });
 
 router.get('/worldnews', (req, res, next) => {
-  axios.get('https://www.reddit.com/r/worldnews.json').then(response => {
-    const filteredPosts = filterJsonFromReddit(response.data);
-    res.status(200).send(filteredPosts);
-  });
+  axios
+    .get('https://www.reddit.com/r/worldnews.json')
+    .then(response => {
+      const filteredPosts = filterJsonFromReddit(response.data);
+      res.status(200).send(filteredPosts);
+    })
+    .catch(next);
 });
 
 router.get('/sports', (req, res, next) => {
-  axios.get('https://www.reddit.com/r/sports.json').then(response => {
-    const filteredPosts = filterJsonFromReddit(response.data);
-    res.status(200).send(filteredPosts);
-  });
-});
-
-router.get('/testpython', (req, res, next) => {
-  console.log('getting data');
   axios
-    .post('http://127.0.0.1:5000/test', {
-      url:
-        'https://www.theguardian.com/us-news/2019/aug/12/raining-plastic-colorado-usgs-microplastics',
-    })
+    .get('https://www.reddit.com/r/sports.json')
     .then(response => {
-      res.send(response.data);
+      const filteredPosts = filterJsonFromReddit(response.data);
+      res.status(200).send(filteredPosts);
     })
-    .catch(e => console.error(e));
+    .catch(next);
 });
 
 module.exports = router;
