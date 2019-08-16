@@ -3,11 +3,16 @@ const router = express.Router();
 const axios = require('axios');
 
 router.post('/', (req, res, next) => {
-  console.log('getting data');
+  const percentageStr = req.body.percentage;
+  let percentage = parseInt(percentageStr);
+
+  // frontend is 'percent to shrink' back end is 'percent of original' so have to invert the value
+  percentage = 100 - percentage;
+
   axios
     .post('http://127.0.0.1:5000/createsummary', {
       url: req.body.url,
-      percentage: req.body.percentage,
+      percentage,
     })
     .then(response => {
       res.send(response.data);

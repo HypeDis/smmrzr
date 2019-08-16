@@ -15,7 +15,7 @@ const filterAndMap = (arr, filterFunc, mapFunc) => {
 
 const filterJsonFromReddit = axiosData => {
   const allPosts = axiosData.data.children;
-  const filterFunc = post => !post.data.domain.includes('reddit');
+  const filterFunc = post => !post.data.url.includes('reddit');
   const mapFunc = post => ({ title: post.data.title, url: post.data.url });
   const allPostsFiltered = filterAndMap(allPosts, filterFunc, mapFunc);
   return allPostsFiltered;
@@ -23,11 +23,15 @@ const filterJsonFromReddit = axiosData => {
 
 // get to /api/reddit/news
 router.get('/:subreddit', (req, res, next) => {
+  const subreddit = req.params.subreddit;
+  if (!subreddit) {
+    res.status(204).send({ error: 'no subreddit' });
+  }
   axios
     .get(`https://www.reddit.com/r/${subreddit}.json`)
     .then(response => {
       const filteredPosts = filterJsonFromReddit(response.data);
-      resizeTo.status(200).send(filteredPosts);
+      res.status(200).send(filteredPosts);
     })
     .catch(next);
 });

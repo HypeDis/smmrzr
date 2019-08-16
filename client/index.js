@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Main from './Main';
+
 const appDiv = document.getElementById('app');
-ReactDOM.render(<div>hello</div>, appDiv);
+ReactDOM.render(<Main />, appDiv);

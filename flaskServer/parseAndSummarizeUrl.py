@@ -16,7 +16,7 @@ def summaryFromUrl(url, percentOfOriginal=50):
     parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     totalSentences = len(parser.document.sentences)
 
-    SENTENCES_COUNT = math.trunc(totalSentences * percentOfOriginal/100)
+    SENTENCES_COUNT = math.trunc(totalSentences * percentOfOriginal / 100)
 
     stemmer = Stemmer(LANGUAGE)
 
