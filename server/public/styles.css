@@ -2,6 +2,8 @@ body {
   height: 100vh;
   background: floralwhite;
   color: slategrey;
+  /* font-family: 'Lato', sans-serif; */
+  font-family: 'Lexend Peta', sans-serif;
 }
 
 #header {
@@ -10,6 +12,11 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 30vh;
+}
+#title {
+  font-family: 'Audiowide', cursive;
+  font-size: 5em;
+  color: #ff5700;
 }
 .url-form {
   display: flex;
@@ -23,6 +30,7 @@ body {
   display: flex;
   flex-direction: row;
   padding: 0px 20px;
+  background: lightgray;
 }
 #r-slash {
   width: 10vw;

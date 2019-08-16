@@ -27,7 +27,6 @@ const ArticleTitlesAccordion = props => {
 
   // reset the scroll when opening the drop down on a new tab
   useEffect(() => {
-    console.log(articlesEl.current);
     if (prevTab !== currentTab) {
       articlesEl.current.scrollTo(0, 0);
       setPrevTab(currentTab);
@@ -39,7 +38,6 @@ const ArticleTitlesAccordion = props => {
     evt.persist();
     const url = evt.target.dataset.url;
     const title = evt.target.dataset.title;
-    console.log('url', url);
     getCurrentArticle({ title, url, percentage });
     changeHiddenStatus(true);
   };

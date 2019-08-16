@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const path = require('path');
+const reload = require('reload');
 
 const redditRoutes = require('./apiRoutes/redditRoutes');
 const summaryRoutes = require('./apiRoutes/summaryRoutes');
@@ -22,12 +23,6 @@ app.get('*', (req, res, next) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-db.sync()
-  .then(() => {
-    chalk.green(console.log('db synced'));
-
-    app.listen(PORT, () => {
-      chalk.green(console.log(`listening on port ${PORT}`));
-    });
-  })
-  .catch(e => chalk.red(console.error(e)));
+app.listen(PORT, function(reloadReturned) {
+  console.log(chalk.green(`listening on port ${PORT}`));
+});
