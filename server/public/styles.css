@@ -1,0 +1,174 @@
+body {
+  height: 100vh;
+  background: floralwhite;
+  color: slategrey;
+  /* font-family: 'Lato', sans-serif; */
+  font-family: 'Lexend Peta', sans-serif;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 30vh;
+}
+#title {
+  font-family: 'Audiowide', cursive;
+  font-size: 5em;
+  color: #ff5700;
+}
+.url-form {
+  display: flex;
+  flex-direction: row;
+}
+.url-bar {
+  width: 70vw;
+}
+
+#subreddit-nav {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 20px;
+  background: lightgray;
+}
+#r-slash {
+  width: 10vw;
+}
+
+#subreddit-nav-tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.subreddit-nav-tab {
+  background: lightgrey;
+}
+
+.subreddit-nav-tab-active {
+  background: blanchedalmond;
+}
+
+#article-ui-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+  background: blanchedalmond;
+}
+
+#articles-header {
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  justify-content: center;
+  width: 80vw;
+  align-items: center;
+}
+
+/* #articles-header * {
+  margin: 0;
+} */
+#slide-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#shrink-slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 20vw; /* Full-width */
+  height: 10px; /* Specified height */
+  background: white; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+#shrink-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: url('/images/snoo-icon.png');
+  background-repeat: no-repeat;
+  background-size: 40px;
+  cursor: pointer;
+}
+#shrink-slider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: url('/images/snoo-icon.png');
+  background-repeat: no-repeat;
+  background-size: 40px;
+  cursor: pointer;
+}
+
+#shrink-slider::-moz-focus-outer {
+  border: 0;
+}
+.articles-header-side-element {
+  flex: 1;
+}
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* height: 10vh; */
+}
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  width: 20vw;
+  align-items: center;
+}
+
+.accordion-header p {
+  margin: 20px;
+}
+
+.accordion-titles {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 40vh;
+  background: lightgray;
+  position: absolute;
+  top: 40vh;
+  max-width: 90vw;
+  margin: auto;
+}
+
+.article-link {
+  padding: 10px;
+}
+
+#article-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.article-display-container-inactive {
+  overflow: hidden !important;
+}
+
+#article-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10vw;
+}
+
+.article-sentence {
+  margin: 5px;
+}

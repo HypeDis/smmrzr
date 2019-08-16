@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/nodemon/bin/nodemon.js ./server/server.js & python3 ./flaskServer/flaskServer.py"
+    "dev": "npm run start-server:dev & npm run start-flask-server:dev & npm run build-watch",
+    "start-server:dev": "./node_modules/.bin/nodemon ./server/server.js",
+    "build-watch": "./node_modules/.bin/webpack -w",
+    "start-flask-server:dev": "./node_modules/.bin/nodemon --exec python3 ./flaskServer/flaskServer.py"
   },
   "author": "",
   "license": "ISC",
@@ -16,10 +19,23 @@
     "express": "^4.17.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.13.1"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^5.13.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "reload": "^3.0.1"
   }
 }

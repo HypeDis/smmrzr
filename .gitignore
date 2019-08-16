@@ -3,3 +3,6 @@ node_modules
 .DS_Store
 .vscode
 env
+bundle.js
+bundle.js.map
+__pycache__

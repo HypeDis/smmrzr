@@ -15,11 +15,19 @@ def return_json():
     try:
         postDict = json.loads(request.data)
         url = postDict['url']
-        summaryArr = summaryFromUrl(url)
 
+        percentage = postDict['percentage']
+        if not percentage:
+            percentage = 50
+        try:
+            percentage = int(percentage)
+        except:
+            percentage = 50
+
+        summaryArr = summaryFromUrl(url, percentage)
         return {'content': summaryArr}
     except:
-        return{'error': 'could not create summary'}
+        return {'error': 'could not create summary'}
 
 
 if __name__ == "__main__":
