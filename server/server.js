@@ -1,10 +1,8 @@
-const db = require('./db/db');
 const chalk = require('chalk');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const path = require('path');
-const reload = require('reload');
 
 const redditRoutes = require('./apiRoutes/redditRoutes');
 const summaryRoutes = require('./apiRoutes/summaryRoutes');

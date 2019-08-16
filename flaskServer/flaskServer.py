@@ -2,7 +2,7 @@ from parseAndSummarizeUrl import summaryFromUrl
 from flask import Flask, request, jsonify
 import json
 import asyncio
-summaryServer = Flask(__name__)
+app = Flask(__name__)
 
 
 @app.route("/")

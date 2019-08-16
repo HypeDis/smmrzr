@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "node ./server/server.js",
+    "start": "node ./server/server.js & npm run start-flask-server",
     "dev": "npm run start-server:dev & npm run start-flask-server:dev & npm run build-watch",
     "start-server:dev": "./node_modules/.bin/nodemon ./server/server.js",
-    "build-watch": "./node_modules/.bin/webpack -w",
-    "start-flask-server:dev": "./node_modules/.bin/nodemon --exec python3 ./flaskServer/flaskServer.py"
+    "build": "webpack",
+    "build-watch": "webpack -w",
+    "start-flask-server:dev": "./node_modules/.bin/nodemon --exec python3 ./flaskServer/flaskServer.py",
+    "start-flask-server": "python3 ./flaskServer/flaskServer.py",
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +21,7 @@
     "chalk": "^2.4.2",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "morgan": "^1.9.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "react": "^16.9.0",
@@ -35,8 +39,6 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "morgan": "^1.9.1",
-    "nodemon": "^1.19.1",
-    "reload": "^3.0.1"
+    "nodemon": "^1.19.1"
   }
 }
