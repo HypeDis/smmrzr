@@ -60,9 +60,9 @@ body {
   align-items: center;
 }
 
-#articles-header * {
+/* #articles-header * {
   margin: 0;
-}
+} */
 #slide-container {
   display: flex;
   flex-direction: row;
@@ -116,10 +116,14 @@ input[type='range']::-moz-focus-outer {
 .accordion-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   text-decoration: none;
   width: 20vw;
   align-items: center;
+}
+
+.accordion-header p {
+  margin: 20px;
 }
 
 .accordion-titles {

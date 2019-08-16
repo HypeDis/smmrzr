@@ -287,6 +287,7 @@ const ArticleTitlesAccordion = props => {
       changeHiddenStatus(!isHidden);
     },
     href: "",
+    className: "uk-icon-button uk-icon-hover ",
     "uk-icon": isHidden ? 'plus' : 'minus'
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "accordion-titles",

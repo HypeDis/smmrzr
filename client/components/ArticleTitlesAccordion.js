@@ -30,6 +30,7 @@ const ArticleTitlesAccordion = props => {
             changeHiddenStatus(!isHidden);
           }}
           href=""
+          className="uk-icon-button uk-icon-hover "
           uk-icon={isHidden ? 'plus' : 'minus'}
         />
       </div>
