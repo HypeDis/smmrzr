@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import { changeHiddenStatus, getCurrentArticleThunk } from './../redux';
@@ -9,7 +9,30 @@ const ArticleTitlesAccordion = props => {
     changeHiddenStatus,
     getCurrentArticle,
     percentage,
+    currentTab,
   } = props;
+
+  const articlesEl = useRef(null);
+
+  const usePrevious = val => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = currentTab;
+    }, [currentTab]);
+    return ref.current;
+  };
+
+  const prevTab = usePrevious(currentTab);
+  // works when dropdown is kept open but not when switching subreddits while dropdown is hidden
+  useEffect(() => {
+    console.log('previous tab', prevTab);
+    console.log('resetting articles scroll', articlesEl.current);
+    articlesEl.current.scrollTo(0, 0);
+  }, [currentTab]);
+
+  // useEffect(() => {
+  //   console.log(prevTab);
+  // }, [isHidden]);
 
   const handleClick = evt => {
     evt.preventDefault();
@@ -35,7 +58,7 @@ const ArticleTitlesAccordion = props => {
         />
       </div>
 
-      <div className="accordion-titles" hidden={isHidden}>
+      <div ref={articlesEl} className="accordion-titles" hidden={isHidden}>
         {articles.map((article, idx) => {
           return (
             <a
@@ -55,10 +78,11 @@ const ArticleTitlesAccordion = props => {
   );
 };
 
-const mapState = ({ articles, articlesHidden, percentage }) => ({
+const mapState = ({ articles, articlesHidden, percentage, currentTab }) => ({
   articles,
   isHidden: articlesHidden,
   percentage,
+  currentTab,
 });
 
 const mapDispatch = dispatch => ({

@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { changeHiddenStatus } from './../redux';
 const ArticleDisplay = props => {
   const { currentArticle, changeHiddenStatus, articlesHidden } = props;
+  const displayEl = useRef(null);
+  useEffect(() => {
+    displayEl.current.scrollTo(0, 0);
+  }, [currentArticle.url]);
   return (
     <div
+      ref={displayEl}
       id="article-display-container"
+      className={currentArticle.url ? '' : 'article-display-container-inactive'}
       onClick={e => {
         e.preventDefault();
         changeHiddenStatus(true);
@@ -23,9 +29,9 @@ const ArticleDisplay = props => {
             {currentArticle.title}
           </a>
         </h3>
-        {currentArticle.content.map(sentence => {
+        {currentArticle.content.map((sentence, idx) => {
           return (
-            <p className="article-sentence" key={sentence}>
+            <p className="article-sentence" key={`sentence_${idx}`}>
               {sentence}
             </p>
           );

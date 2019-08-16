@@ -101,7 +101,7 @@ body {
   cursor: pointer;
 }
 
-input[type='range']::-moz-focus-outer {
+#shrink-slider::-moz-focus-outer {
   border: 0;
 }
 .articles-header-side-element {
@@ -148,6 +148,10 @@ input[type='range']::-moz-focus-outer {
   height: 60vh;
   overflow-y: scroll;
   margin-bottom: 20px;
+}
+
+.article-display-container-inactive {
+  overflow: hidden !important;
 }
 
 #article-content {
