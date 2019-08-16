@@ -3,7 +3,9 @@ import SubredditNav from './SubredditNav';
 const Header = props => {
   return (
     <div id="header">
-      <h1 style={{ marginTop: '10vh' }}>SMMr/ZR</h1>
+      <h1 id="title" style={{ marginTop: '10vh' }}>
+        SMMr/ZR
+      </h1>
       {/* <form className="url-form">
         <label htmlFor="url">Article URL: </label>
         <input

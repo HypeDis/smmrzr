@@ -4,6 +4,7 @@ import articlesReducer from './articlesReducer';
 import articlesHiddenReducer from './articlesHiddenReducer';
 import currentArticleReducer from './currentArticleReducer';
 import percentageReducer from './percentageReducer';
+import prevTabReducer from './prevTabReducer';
 export {
   currentTabReducer,
   tabsReducer,
@@ -11,4 +12,5 @@ export {
   articlesHiddenReducer,
   currentArticleReducer,
   percentageReducer,
+  prevTabReducer,
 };

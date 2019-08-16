@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentTab, getArticlesThunk } from '../redux/index';
+import { setCurrentTab, getArticlesThunk, setPrevTab } from '../redux/index';
 
 const SubredditNav = props => {
-  const { tabs, currentTab, setCurrentTab, getArticles } = props;
+  const { tabs, currentTab, setCurrentTab, getArticles, setPrevTab } = props;
   const handleClick = evt => {
     evt.preventDefault();
     evt.persist();
@@ -13,14 +13,12 @@ const SubredditNav = props => {
       evt.target = evt.target.parentNode;
     }
     const currentSubreddit = evt.target.dataset.subreddit;
+    setPrevTab(currentTab);
     setCurrentTab(currentSubreddit);
     // getArticles(currentSubreddit);
   };
   return (
     <div id="subreddit-nav">
-      {/* <div id="r-slash">
-        <h1>r/</h1>
-      </div> */}
       <div id="subreddit-nav-tabs" className="uk-tab">
         {tabs.map(tab => {
           return (
@@ -50,6 +48,7 @@ const mapState = ({ tabs, currentTab }) => ({
 const mapDispatch = dispatch => ({
   setCurrentTab: tabName => dispatch(setCurrentTab(tabName)),
   getArticles: subreddit => dispatch(getArticlesThunk(subreddit)),
+  setPrevTab: currentSubreddit => dispatch(setPrevTab(currentSubreddit)),
 });
 
 export default connect(

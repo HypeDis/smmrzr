@@ -7,7 +7,7 @@ import rootReducer from './rootReducer';
 
 const store = createStore(
   rootReducer /* preloadedState, */,
-  composeEnhancers(applyMiddleware(logger, thunk))
+  composeEnhancers(applyMiddleware(/* logger, */ thunk))
 );
 
 export default store;
@@ -18,3 +18,4 @@ export * from './creators/articlesCreators';
 export * from './creators/articlesHiddenCreators';
 export * from './creators/currentArticleCreators';
 export * from './creators/percentageCreators';
+export * from './creators/prevTabCreators';

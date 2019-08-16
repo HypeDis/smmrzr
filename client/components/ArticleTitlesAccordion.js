@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
-import { changeHiddenStatus, getCurrentArticleThunk } from './../redux';
+import {
+  changeHiddenStatus,
+  getCurrentArticleThunk,
+  setPrevTab,
+} from './../redux';
 const ArticleTitlesAccordion = props => {
   const {
     articles,
@@ -10,29 +14,25 @@ const ArticleTitlesAccordion = props => {
     getCurrentArticle,
     percentage,
     currentTab,
+    setPrevTab,
+    prevTab,
   } = props;
 
   const articlesEl = useRef(null);
 
-  const usePrevious = val => {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = currentTab;
-    }, [currentTab]);
-    return ref.current;
-  };
-
-  const prevTab = usePrevious(currentTab);
   // works when dropdown is kept open but not when switching subreddits while dropdown is hidden
   useEffect(() => {
-    console.log('previous tab', prevTab);
-    console.log('resetting articles scroll', articlesEl.current);
     articlesEl.current.scrollTo(0, 0);
   }, [currentTab]);
 
-  // useEffect(() => {
-  //   console.log(prevTab);
-  // }, [isHidden]);
+  // reset the scroll when opening the drop down on a new tab
+  useEffect(() => {
+    console.log(articlesEl.current);
+    if (prevTab !== currentTab) {
+      articlesEl.current.scrollTo(0, 0);
+      setPrevTab(currentTab);
+    }
+  }, [isHidden]);
 
   const handleClick = evt => {
     evt.preventDefault();
@@ -78,13 +78,19 @@ const ArticleTitlesAccordion = props => {
   );
 };
 
-const mapState = ({ articles, articlesHidden, percentage, currentTab }) => ({
+const mapState = ({
+  articles,
+  articlesHidden,
+  percentage,
+  currentTab,
+  prevTab,
+}) => ({
   articles,
   isHidden: articlesHidden,
   percentage,
   currentTab,
+  prevTab,
 });
-
 const mapDispatch = dispatch => ({
   changeHiddenStatus: status => {
     dispatch(changeHiddenStatus(status));
@@ -92,6 +98,7 @@ const mapDispatch = dispatch => ({
   getCurrentArticle: url => {
     dispatch(getCurrentArticleThunk(url));
   },
+  setPrevTab: currentTab => dispatch(setPrevTab(currentTab)),
 });
 export default connect(
   mapState,

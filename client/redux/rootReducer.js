@@ -7,6 +7,7 @@ import {
   articlesHiddenReducer,
   currentArticleReducer,
   percentageReducer,
+  prevTabReducer,
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   articlesHidden: articlesHiddenReducer,
   currentArticle: currentArticleReducer,
   percentage: percentageReducer,
+  prevTab: prevTabReducer,
 });
 
 export default rootReducer;

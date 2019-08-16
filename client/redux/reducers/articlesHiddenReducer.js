@@ -1,4 +1,4 @@
-const initialState = true;
+const initialState = false;
 import { CHANGE_HIDDEN_STATUS } from './../index';
 const articlesHiddenReducer = (state = initialState, action) => {
   switch (action.type) {
