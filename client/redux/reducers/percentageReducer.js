@@ -1,6 +1,6 @@
 import { SET_PERCENTAGE } from './../index';
 
-const initialState = 50;
+const initialState = 0;
 
 const percentageReducer = (state = initialState, action) => {
   switch (action.type) {

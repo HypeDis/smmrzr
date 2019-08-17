@@ -1,3 +1,4 @@
+require('dotenv').config();
 const chalk = require('chalk');
 const express = require('express');
 const morgan = require('morgan');
@@ -21,6 +22,6 @@ app.get('*', (req, res, next) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-app.listen(PORT, function(reloadReturned) {
+app.listen(PORT, () => {
   console.log(chalk.green(`listening on port ${PORT}`));
 });

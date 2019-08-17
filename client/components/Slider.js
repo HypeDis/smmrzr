@@ -11,12 +11,32 @@ const Slider = props => {
     getCurrentArticle,
   } = props;
 
+  const getIndex = (percentage, arr) => {
+    const len = arr.length;
+    let idx = len - Math.round((percentage / 100) * len) - 1;
+    if (idx > len - 1) {
+      idx = len - 1;
+    }
+    if (idx < 0) {
+      idx = 0;
+    }
+    console.log(idx);
+    return idx;
+  };
+
+  const summarizeArr = ['Smmrz', 'Summrz', 'Summarz', 'Summariz', 'Summarize'];
+
+  const [calculatedIdx, setCalculatedIdx] = useState(
+    getIndex(percentage, summarizeArr)
+  );
   const handleChange = e => {
     const value = e.target.value;
     setPercentage(parseInt(value));
   };
 
   const handleMouseUp = () => {
+    console.log('calculating index');
+    setCalculatedIdx(getIndex(percentage, summarizeArr));
     if (!currentArticle.url) {
       return;
     }
@@ -27,8 +47,9 @@ const Slider = props => {
   return (
     <div id="slide-container" className="articles-header-side-element">
       <label htmlFor="rangeValue" style={{ paddingRight: '5px' }}>
-        Shrink it:
+        {summarizeArr[calculatedIdx]}:
       </label>
+      <i uk-icon="minus" />
       <input
         type="range"
         name="rangeValue"
@@ -40,6 +61,7 @@ const Slider = props => {
         onMouseUp={handleMouseUp}
         id="shrink-slider"
       />
+      <i uk-icon="plus" />
     </div>
   );
 };

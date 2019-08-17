@@ -52,7 +52,7 @@ const ArticleTitlesAccordion = props => {
           }}
           href=""
           className="uk-icon-button uk-icon-hover "
-          uk-icon={isHidden ? 'plus' : 'minus'}
+          uk-icon={isHidden ? 'chevron-down' : 'chevron-up'}
         />
       </div>
 
